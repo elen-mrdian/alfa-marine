@@ -1090,3 +1090,99 @@ button {
     height: 160px;
   }
 }
+/* === SERVICES (UPDATED STRUCTURE) === */
+
+.cards-grid-services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Hide mobile slider on desktop */
+.mobile-services-slider {
+  display: none;
+}
+
+/* Service card base */
+.service-card {
+  background: #f5f7fb;
+  border: 1px solid rgba(217, 222, 234, 0.75);
+  border-radius: 24px;
+  padding: 30px;
+}
+
+.interactive-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(9, 16, 38, 0.12);
+}
+
+/* === MOBILE SERVICES SLIDER === */
+
+@media (max-width: 820px) {
+
+  /* Hide desktop cards */
+  .desktop-services-grid {
+    display: none;
+  }
+
+  /* Show mobile slider */
+  .mobile-services-slider {
+    display: block;
+  }
+
+  .services-slider {
+    display: grid;
+    grid-template-columns: 52px 1fr 52px;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .service-slide-card {
+    background: #f5f7fb;
+    border: 1px solid rgba(217, 222, 234, 0.75);
+    border-radius: 22px;
+    padding: 22px;
+    min-height: 280px;
+  }
+
+  .service-slide-card h3 {
+    margin: 0 0 10px;
+    font-size: 22px;
+  }
+
+  .service-slide-card p {
+    margin: 0 0 12px;
+    font-size: 15px;
+    color: #69708a;
+  }
+
+  .service-slide-card ul {
+    padding-left: 18px;
+    margin: 0;
+  }
+
+  .service-slide-card li {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  /* Arrows */
+  .slider-arrow {
+    min-width: 52px;
+    min-height: 52px;
+    border-radius: 18px;
+    border: 1px solid rgba(6, 6, 63, 0.15);
+    background: rgba(6, 6, 63, 0.05);
+    font-size: 26px;
+    color: #06063f;
+    cursor: pointer;
+  }
+
+  .slider-arrow:active {
+    transform: scale(0.96);
+  }
+}
