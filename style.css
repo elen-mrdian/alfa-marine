@@ -845,30 +845,30 @@ button {
     padding: 0 18px;
   }
 
+  /* mobile services: one full card per swipe */
   .cards-grid-services {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 86%;
-    gap: 16px;
+    grid-auto-columns: 100%;
+    gap: 0;
     overflow-x: auto;
     overflow-y: hidden;
-    padding-bottom: 10px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    padding-bottom: 0;
   }
 
   .cards-grid-services::-webkit-scrollbar {
-    height: 6px;
+    display: none;
   }
 
-  .cards-grid-services::-webkit-scrollbar-thumb {
-    background: rgba(6, 6, 63, 0.18);
-    border-radius: 999px;
+  .cards-grid-services {
+    scrollbar-width: none;
   }
 
   .service-card {
     scroll-snap-align: start;
-    min-height: 100%;
+    width: 100%;
   }
 
   .interactive-card:hover {
@@ -970,8 +970,7 @@ button {
   }
 
   .cards-grid-services {
-    grid-auto-columns: 92%;
-    gap: 14px;
+    grid-auto-columns: 100%;
   }
 
   .service-card,
