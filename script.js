@@ -22,14 +22,61 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
+  const services = [
+    {
+      title: "Provision Supply",
+      text: "We supply fresh, frozen, and dry provisions tailored to crew size and voyage duration. All products are sourced from verified suppliers and handled under strict quality and hygiene standards.",
+      items: [
+        "Fresh produce, meat, poultry, and seafood",
+        "Frozen and dry food products",
+        "Dairy and bakery items",
+        "Beverages and bottled water",
+        "Multinational and special dietary products",
+        "Galley consumables"
+      ]
+    },
+    {
+      title: "Technical Supply",
+      text: "We provide essential technical stores for routine servicing and urgent requirements, working with trusted manufacturers to ensure quality and compliance.",
+      items: [
+        "Engine parts and mechanical components",
+        "Tools and workshop equipment",
+        "Deck and mooring equipment",
+        "Deck stores and cabin stores",
+        "Lubricants and chemicals",
+        "Electrical components",
+        "Safety and PPE equipment"
+      ]
+    },
+    {
+      title: "Repair Services",
+      text: "We arrange qualified marine technicians to perform repairs aligned with vessel schedules, helping reduce operational delays.",
+      items: [
+        "Mechanical and engine repairs",
+        "Electrical maintenance",
+        "Deck equipment servicing",
+        "Welding and fabrication",
+        "Emergency technical support"
+      ]
+    }
+  ];
+
   let currentBenefit = 0;
-  let isAnimating = false;
+  let currentService = 0;
+  let isAnimatingBenefit = false;
 
   const benefitTitle = document.getElementById("benefitTitle");
   const benefitText = document.getElementById("benefitText");
   const benefitCard = document.getElementById("benefitCard");
   const prevBenefit = document.getElementById("prevBenefit");
   const nextBenefit = document.getElementById("nextBenefit");
+
+  const serviceTitle = document.getElementById("serviceTitle");
+  const serviceText = document.getElementById("serviceText");
+  const serviceList = document.getElementById("serviceList");
+  const prevService = document.getElementById("prevService");
+  const nextService = document.getElementById("nextService");
+
   const siteHeader = document.getElementById("siteHeader");
   const mobileMenuToggle = document.getElementById("mobileMenuToggle");
   const mainNav = document.getElementById("mainNav");
@@ -43,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function animateBenefitChange(direction) {
     if (
-      isAnimating ||
+      isAnimatingBenefit ||
       !benefitTitle ||
       !benefitText ||
       !benefitCard ||
@@ -53,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    isAnimating = true;
+    isAnimatingBenefit = true;
 
     const outClass = direction === "next" ? "slide-out-left" : "slide-out-right";
     const inClass = direction === "next" ? "slide-in-right" : "slide-in-left";
@@ -84,9 +131,23 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       setTimeout(() => {
-        isAnimating = false;
+        isAnimatingBenefit = false;
       }, 380);
     }, 190);
+  }
+
+  function setService(index) {
+    if (!serviceTitle || !serviceText || !serviceList) return;
+
+    serviceTitle.textContent = services[index].title;
+    serviceText.textContent = services[index].text;
+    serviceList.innerHTML = "";
+
+    services[index].items.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      serviceList.appendChild(li);
+    });
   }
 
   function updateHeaderState() {
@@ -119,6 +180,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     nextBenefit.addEventListener("click", () => {
       animateBenefitChange("next");
+    });
+  }
+
+  if (serviceTitle && serviceText && serviceList && prevService && nextService) {
+    setService(currentService);
+
+    prevService.addEventListener("click", () => {
+      currentService = (currentService - 1 + services.length) % services.length;
+      setService(currentService);
+    });
+
+    nextService.addEventListener("click", () => {
+      currentService = (currentService + 1) % services.length;
+      setService(currentService);
     });
   }
 
