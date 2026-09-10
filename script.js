@@ -47,17 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "Electrical components",
         "Safety and PPE equipment"
       ]
-    },
-    {
-      title: "Repair Services",
-      text: "We arrange qualified marine technicians to perform repairs aligned with vessel schedules, helping reduce operational delays.",
-      items: [
-        "Mechanical and engine repairs",
-        "Electrical maintenance",
-        "Deck equipment servicing",
-        "Welding and fabrication",
-        "Emergency technical support"
-      ]
     }
   ];
 
