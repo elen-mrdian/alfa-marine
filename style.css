@@ -389,7 +389,7 @@ button {
 
 .cards-grid-services {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
   align-items: stretch;
   overflow-x: visible;
@@ -750,7 +750,7 @@ button {
   }
 
   .cards-grid-services {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1094,8 +1094,9 @@ button {
 
 .cards-grid-services {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+  align-items: stretch;
 }
 
 /* Hide mobile slider on desktop */
